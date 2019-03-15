@@ -10,7 +10,7 @@ describe "AnimeRenamer" do
 		end
 
 		it 'should return original episode if no numbers are found' do
-			expect(renamer.rename "Madoka OP [1280x720]", "Madoka", 2).to eq "Madoka OP [1280x720]"
+			expect(renamer.rename "Madoka OP ", "Madoka", 2).to eq "Madoka OP [1280x720]"
 		end
 	end
 
