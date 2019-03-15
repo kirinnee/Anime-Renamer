@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+require "anime_renamer"
+
+rename = AnimeRenamer::Renamer.new
+rename.run ARGV

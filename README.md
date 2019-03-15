@@ -20,6 +20,16 @@ Or install it yourself as:
 
 ## Usage
 
+```bash
+$ anirename <anime-name> <extension> <glob> <max episode digit> 
+```
+| Name | Description |
+| --- | --- |
+| anime-name | anime name to rename to |
+| extension | extension name to rename |
+| glob | glob to look for files, relative to current directory |
+| max episode digit | number of digits to pad, and look for at most |
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. 
