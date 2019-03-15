@@ -30,6 +30,7 @@ module AnimeRenamer
 			ext = File.extname original
 			basename = File.basename original, ext
 			basename.sub! /\[.*\]/, ""
+			basename.sub! /\(.*\)/, ""
 			episode, _ = basename.match(/\A.*[^\.0-9]([0-9]{1,#{digits}})[^\.0-9].*\z/i)&.captures
 			point5, _ = basename.match(/\A.*[^0-9]([0-9]{1,#{digits}}\.5)[^0-9].*\z/i)&.captures
 			return p basename if (episode || point5).nil?
