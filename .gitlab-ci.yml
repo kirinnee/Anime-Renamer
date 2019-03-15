@@ -5,16 +5,22 @@ stages:
 
 Unit Test:
   stage: test
+  tags:
+    - rubygem
   script:
     - bundle install
     - bundle exec rspec
 Build:
+  tags:
+    - rubygem
   stage: build
   script: gem build $GEM_NAME
   artifacts:
     paths:
       - ./*.gem
 Publish:
+  tags:
+    - rubygem
   stage: publish
   script:
     - mkdir ~/.gem
