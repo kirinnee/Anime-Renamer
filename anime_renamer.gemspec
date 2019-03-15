@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
 	spec.email = ["kirinnee@gmail.com"]
 
 	spec.summary = %q{CLI to rename anime episodes}
-	spec.homepage = "git@gitlab.com:ruby-gem/anime-renamer.git"
+	spec.homepage = "https://gitlab.com/ruby-gem/anime-renamer.git"
 	spec.license = "MIT"
 	
 	# Specify which files should be added to the gem when it is released.
