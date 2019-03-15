@@ -1,0 +1,29 @@
+stages:
+  - test
+  - build
+  - publish
+
+Unit Test:
+  stage: test
+  script:
+    - bundle install
+    - bundle exec rspec
+Build:
+  stage: build
+  script: gem build $GEM_NAME
+  artifacts:
+    paths:
+      - ./*.gem
+Publish:
+  stage: publish
+  script:
+    - mkdir ~/.gem
+    - "echo \":rubygems_api_key: $API_KEY\" > ~/.gem/credentials"
+    - chmod 0600 ~/.gem/credentials
+    - gem push $GEM_NAME-*.gem
+  after_script:
+    - shred -vfu ~/.gem/credentials
+  only:
+    - /v[0-9\.]*/
+  except:
+    - branches

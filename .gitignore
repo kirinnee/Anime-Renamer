@@ -1,0 +1,17 @@
+/.bundle/
+/.yardoc
+/_yardoc/
+/coverage/
+/doc/
+/pkg/
+/spec/reports/
+/tmp/
+.idea/*
+!.idea/runConfigurations
+!.idea/*.iml
+!.idea/*.xml
+.idea/workspace.xml
+.idea/vcs.xml
+# rspec failure tracking
+.rspec_status
+*.gem
