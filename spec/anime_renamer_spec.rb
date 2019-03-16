@@ -10,8 +10,24 @@ describe "AnimeRenamer" do
 		end
 
 		it 'should return original episode if no numbers are found' do
-			expect(renamer.rename "Madoka OP [1280x720]", "Madoka", 2).to eq "Madoka OP "
+			expect(renamer.rename "Madoka OP [1280x720]", "Madoka", 2).to eq "Madoka OP"
 		end
+
+		it 'should not remove whole block if it starts and end with []' do
+			expect(renamer.rename "[HorribleSubs] Zombieland Sage 1 [Helvetica]", "ZL", 2).to eq "ZL Episode 01"
+		end
+
+		it 'should remove all [] anyways' do
+			expect(renamer.rename "[HorribleSubs] OP [1280x720]", "ZL", 2).to eq "OP"
+		end
+
+		it 'should not remove whole block if it starts and end iwth ()' do
+			expect(renamer.rename "(HorribleSubs) Zombieland Sage 1 (Helvetica)", "ZL", 2).to eq "ZL Episode 01"
+		end
+		it 'should remove all () anyways' do
+			expect(renamer.rename "(HorribleSubs) OP (1280x720)", "ZL", 2).to eq "OP"
+		end
+
 	end
 
 	describe "get_file_with_extension" do

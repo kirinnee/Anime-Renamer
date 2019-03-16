@@ -29,12 +29,16 @@ module AnimeRenamer
 		def rename(original, name, digits = 2)
 			ext = File.extname original
 			basename = File.basename original, ext
-			basename.sub! /\[.*\]/, ""
-			basename.sub! /\(.*\)/, ""
+			basename.gsub! /\[[^\]]*\]/, ""
+			basename.gsub! /\([^)]*\)/, ""
+			basename.strip!
 			episode, _ = basename.match(/\A.*[^\.0-9]([0-9]{1,#{digits}})[^\.0-9].*\z/i)&.captures
+			episode_end, _ = basename.match(/\A.*[^\.0-9]([0-9]{1,#{digits}})\z/i)&.captures
 			point5, _ = basename.match(/\A.*[^0-9]([0-9]{1,#{digits}}\.5)[^0-9].*\z/i)&.captures
-			return p basename if (episode || point5).nil?
-			p "#{name} Episode #{(episode || point5).to_s.rjust(digits, "0")}"
+			point5_end, _ = basename.match(/\A.*[^0-9]([0-9]{1,#{digits}}\.5)\z/i)&.captures
+			final_name = episode || episode_end || point5 || point5_end
+			return p basename if (final_name).nil?
+			p "#{name} Episode #{(final_name).to_s.rjust(digits, "0")}"
 		end
 	end
 end
